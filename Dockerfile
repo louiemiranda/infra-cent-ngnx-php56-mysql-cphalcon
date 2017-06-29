@@ -32,11 +32,19 @@ RUN yum -y install git gcc
 #    cd /tmp && \
 #    /bin/rm -rfv /tmp/cphalcon/ &&
 
-RUN git clone https://github.com/phalcon/cphalcon.git && \
+# RUN git clone https://github.com/phalcon/cphalcon/tree/phalcon-v2.0.13 cphalcon && \
+# git clone -b 2.4 --single-branch https://github.com/Itseez/opencv.git opencv-2.4
+RUN git clone -b 2.0.x https://github.com/phalcon/cphalcon.git cphalcon && \
+    #cd cphalcon/build/ && \
+    #ls -l cphalcon/ &&
+    # ./install \
+    #cd /tmp && \
+    #/bin/rm -rfv /tmp/cphalcon/ &&
+
     cd cphalcon/build/ && \
-    ./install \
-    cd /tmp \
-    /bin/rm -rfv /tmp/cphalcon/
+    #./install && \
+    #cd /tmp && \
+    #/bin/rm -rfv /tmp/cphalcon/ &&
 
 # RUN /bin/echo 'extension=phalcon.so' >/etc/php5/mods-available/phalcon.ini
 
