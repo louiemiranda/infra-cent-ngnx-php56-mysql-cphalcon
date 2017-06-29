@@ -32,7 +32,11 @@ RUN yum -y install git gcc
 #    cd /tmp && \
 #    /bin/rm -rfv /tmp/cphalcon/ &&
 
-RUN git clone https://github.com/phalcon/cphalcon.git &&
+RUN git clone https://github.com/phalcon/cphalcon.git && \
+    cd cphalcon/build/ && \
+    ./install \
+    cd /tmp \
+    /bin/rm -rfv /tmp/cphalcon/
 
 # RUN /bin/echo 'extension=phalcon.so' >/etc/php5/mods-available/phalcon.ini
 
