@@ -51,9 +51,14 @@ RUN git clone -b 2.0.x https://github.com/phalcon/cphalcon.git cphalcon && \
 # Installing other utilities
 RUN yum -y install git software-properties-common zip unzip
 
+# Install Composer and make it available in the PATH
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+
 # Other configs / timezone, short tags, etc
 COPY settings/php.d /etc/php.d
 
 # Adding the configuration file of the nginx
 COPY settings/nginx/conf.d /etc/nginx/conf.d
 ADD  settings/nginx/nginx.conf /etc/nginx/nginx.conf
+
+CMD ["sh","scripts/start.sh"]
