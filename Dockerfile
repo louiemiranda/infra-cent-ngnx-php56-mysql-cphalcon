@@ -42,9 +42,9 @@ RUN git clone -b 2.0.x https://github.com/phalcon/cphalcon.git cphalcon && \
     #/bin/rm -rfv /tmp/cphalcon/ &&
 
     cd cphalcon/build/ && \
-    #./install && \
-    #cd /tmp && \
-    #/bin/rm -rfv /tmp/cphalcon/ &&
+    ./install && \
+    cd /tmp && \
+    /bin/rm -rfv /tmp/cphalcon/
 
 # RUN /bin/echo 'extension=phalcon.so' >/etc/php5/mods-available/phalcon.ini
 
