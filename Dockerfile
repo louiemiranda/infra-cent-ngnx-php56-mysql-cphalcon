@@ -23,6 +23,9 @@ RUN yum -y install nginx
 # Installing compiler, git 
 RUN yum -y install git gcc
 
+# Installing tools
+RUN yum -y install vim
+
 #
 # Installing Phalcon 2.0.13
 #
@@ -55,10 +58,10 @@ RUN yum -y install git software-properties-common zip unzip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Other configs / timezone, short tags, etc
-COPY settings/php.d /etc/php.d
+#COPY settings/php.d /etc/php.d
 
 # Adding the configuration file of the nginx
-COPY settings/nginx/conf.d /etc/nginx/conf.d
-ADD  settings/nginx/nginx.conf /etc/nginx/nginx.conf
+#COPY settings/nginx/conf.d /etc/nginx/conf.d
+#ADD  settings/nginx/nginx.conf /etc/nginx/nginx.conf
 
-CMD ["sh","scripts/start.sh"]
+#CMD ["sh","scripts/start.sh"]
