@@ -8,6 +8,11 @@ RUN yum -y install epel-release
 RUN yum -y install wget
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 RUN wget https://centos6.iuscommunity.org/ius-release.rpm
+
+# MYSQL
+RUN wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+RUN rpm -ivh mysql-community-release-el6-5.noarch.rpm
+
 RUN rpm -Uvh ius-release*.rpm
 RUN yum -y update
 
