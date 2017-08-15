@@ -49,7 +49,7 @@ RUN git clone -b 2.0.x https://github.com/phalcon/cphalcon.git cphalcon && \
     cd /tmp && \
     /bin/rm -rfv /tmp/cphalcon/
 
-# RUN /bin/echo 'extension=phalcon.so' >/etc/php5/mods-available/phalcon.ini
+RUN /bin/echo 'extension=phalcon.so' > /etc/php.d/phalcon.ini
 
 # Installing other utilities
 RUN yum -y install git software-properties-common zip unzip
