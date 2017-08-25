@@ -17,13 +17,16 @@ RUN rpm -Uvh ius-release*.rpm
 RUN yum -y update
 
 # Installing web application components
-RUN yum -y install php56u-fpm php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath php56u-pecl-memcache
+RUN yum -y install php56u-fpm php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath php56u-pecl-memcache php56u-pecl-memcached
 
 # Installing mysql
 RUN yum -y install mysql-server mysql-client
 
 # Installing nginx 
 RUN yum -y install nginx
+
+# Installing memcached
+RUN yum -y install memcached
 
 # Installing compiler, git 
 RUN yum -y install git gcc
