@@ -23,7 +23,10 @@ RUN yum -y install php56u-fpm php56u php56u-opcache php56u-xml php56u-mcrypt php
 RUN yum -y install mysql-server mysql-client
 
 # Installing nginx 
-RUN yum -y install nginx
+# RUN yum -y install nginx
+
+# Installing nginx from source with add more headers
+RUN ["sh","scripts/install_nginx_header.sh"]
 
 # Installing memcached
 RUN yum -y install memcached
