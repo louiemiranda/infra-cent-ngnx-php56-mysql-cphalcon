@@ -1,6 +1,7 @@
 #!/bin/sh
 
-NGINX_VER=1.12.0
+# NGINX_VER=1.12.0
+NGINX_VER=1.10.2
 HEADERS_MORE_VER=0.32
 
 PWD=`pwd`
@@ -35,7 +36,6 @@ cd nginx-${NGINX_VER}
     --user=nginx \
     --group=nginx \
     --with-file-aio \
-    --with-ipv6 \
     --with-http_ssl_module \
     --with-http_v2_module \
     --with-http_realip_module \
@@ -58,7 +58,7 @@ cd nginx-${NGINX_VER}
     --with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic' \
     --with-ld-opt=' -Wl,-E' \
     --add-module=/usr/local/src/headers-more-nginx-module
-make && sudo make install
+make && make install
 # restart nginx
 /etc/init.d/nginx restart
 nginx -V
