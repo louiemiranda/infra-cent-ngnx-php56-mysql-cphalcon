@@ -22,8 +22,6 @@ RUN yum -y install php56u-fpm php56u php56u-opcache php56u-xml php56u-mcrypt php
 # Installing mysql
 RUN yum -y install mysql-server mysql-client
 
-# Installing nginx 
-RUN yum -y install nginx
 
 # Installing memcached
 RUN yum -y install memcached
@@ -34,24 +32,22 @@ RUN yum -y install git gcc
 # Installing tools
 RUN yum -y install vim
 
+# Installing nginx 
+RUN yum -y install nginx
+
+# Installing nginx from source with add more headers
+# RUN pwd
+ADD scripts/ /tmp/scripts
+
+RUN ls -la /tmp/scripts/
+RUN ["sh","/tmp/scripts/install_nginx_header.sh"]
+
+# COPY scripts/init.sh /etc/init.d
+
 #
 # Installing Phalcon 2.0.13
 #
-#RUN /usr/bin/git clone git://github.com/phalcon/cphalcon.git && \
-#    cd cphalcon/build/ && \
-#    ./install && \
-#    cd /tmp && \
-#    /bin/rm -rfv /tmp/cphalcon/ &&
-
-# RUN git clone https://github.com/phalcon/cphalcon/tree/phalcon-v2.0.13 cphalcon && \
-# git clone -b 2.4 --single-branch https://github.com/Itseez/opencv.git opencv-2.4
 RUN git clone -b 2.0.x https://github.com/phalcon/cphalcon.git cphalcon && \
-    #cd cphalcon/build/ && \
-    #ls -l cphalcon/ &&
-    # ./install \
-    #cd /tmp && \
-    #/bin/rm -rfv /tmp/cphalcon/ &&
-
     cd cphalcon/build/ && \
     ./install && \
     cd /tmp && \
@@ -70,6 +66,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 
 # Adding the configuration file of the nginx
 #COPY settings/nginx/conf.d /etc/nginx/conf.d
-#ADD  settings/nginx/nginx.conf /etc/nginx/nginx.conf
+ADD  settings/nginx/nginx.conf /etc/nginx/nginx.conf
 
 #CMD ["sh","scripts/start.sh"]
