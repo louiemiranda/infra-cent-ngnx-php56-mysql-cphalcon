@@ -36,6 +36,7 @@ cd nginx-${NGINX_VER}
     --user=nginx \
     --group=nginx \
     --with-file-aio \
+    --with-ipv6 \
     --with-http_ssl_module \
     --with-http_v2_module \
     --with-http_realip_module \
